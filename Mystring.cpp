@@ -24,7 +24,6 @@ Mystring::~Mystring()
 void Mystring::display()
 {
     cout<<str<<endl;
-
 }
 /*!
  * update string. this will allocate new memory.
