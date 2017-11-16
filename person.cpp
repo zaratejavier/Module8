@@ -12,7 +12,8 @@ person::person(string fn, string ln, int an)
     lastName = ln;
     arNUmber = an;
     //pResource = NULL; // prior to c++11
-    pResource = nullptr;    // c++11
+    //no need for smart pointers
+    //pResource = nullptr;    // c++11
 }
 
 int person::getArNUmber() const
@@ -30,7 +31,7 @@ void person::setArNUmber(int arNUmber)
 person::~person()
 {
    // delete[] pResource; // if pResource points to an array
-    delete pResource;
+   // delete pResource;
 }
 /*!
  * compare person<person
@@ -73,8 +74,10 @@ void person::AddResource()
 {
     //Resource r("Hello");
     //pResource =  &r;  //it only lives in this block
-    delete pResource;
-    pResource = new Resource("Resource for "+ GetName());   //this will survive
+    //delete pResource; //not needed
+    pResource.reset();
+    //pResource = new Resource("Resource for "+ GetName());   //this will survive
+    pResource = make_shared<Resource>("Resource for "+ GetName());
 }
 
 const string &person::getFirstName() const
@@ -86,28 +89,28 @@ void person::setFirstName(const string &firstName)
 {
     person::firstName = firstName;
 }
-/*!
- * copy constructor.
- * @param p : person object to be copy
- */
-person::person(const person &p)
-{
-    firstName = p.firstName;
-    lastName = p.lastName;
-    arNUmber = p.arNUmber;
-    //do not copy the reference. you need to
-    // create your own memory. your own copy
-    pResource = new Resource(p.pResource->GetName());
-}
+///*!
+// * copy constructor.
+// * @param p : person object to be copy
+// */
+//person::person(const person &p)
+//{
+//    firstName = p.firstName;
+//    lastName = p.lastName;
+//    arNUmber = p.arNUmber;
+//    //do not copy the reference. you need to
+//    // create your own memory. your own copy
+//    pResource = new Resource(p.pResource->GetName());
+//}
 
-person &person::operator=(const person &p)
-{
-    firstName = p.firstName;
-    lastName = p.lastName;
-    arNUmber = p.arNUmber;
-
-    delete pResource;
-    pResource = new Resource(p.pResource->GetName());
-
-    return *this;   //return yourself.
-}
+//person &person::operator=(const person &p)
+//{
+//    firstName = p.firstName;
+//    lastName = p.lastName;
+//    arNUmber = p.arNUmber;
+//
+//    delete pResource;
+//    pResource = new Resource(p.pResource->GetName());
+//
+//    return *this;   //return yourself.
+//}

@@ -4,6 +4,7 @@
 
 #ifndef MODULE8_PERSON_H
 #include <iostream>
+#include <memory>   //for smart pointers
 #include "Resource.h"
 #define MODULE8_PERSON_H
 using namespace std;
@@ -14,11 +15,12 @@ private:
     string firstName;
     string lastName;
     int arNUmber;
-    Resource *pResource;
+    //Resource *pResource;
+    shared_ptr<Resource>pResource;  //declare a shared pointer
 public:
     person(string fn, string ln, int an);
     ~person();
-    person(const person &p);
+    //person(const person &p);    //copy constructor
     string GetName() const;     // return first + last
 
 
@@ -37,7 +39,7 @@ public:
     //these should work with: 1) int < person
     // 2) person < int, 3) int > person, 4) person > int
     void AddResource();
-    person&operator = (const person &p);
+    //person&operator = (const person &p);
 };
 bool operator < (int i, const person &p);
 
