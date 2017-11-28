@@ -21,25 +21,26 @@ public:
     person(string fn, string ln, int an);
     ~person();
     //person(const person &p);    //copy constructor
-    string GetName() const;     // return first + last
+    string GetName() ;     // return first + last
 
 
     // Setter and getter for the arNumber
-    int getArNUmber() const;
+    int getArNUmber();
     void setArNUmber(int arNUmber);
 
-    const string &getFirstName() const;
+    const string &getFirstName() ;
 
     void setFirstName(const string &firstName);
 
     //Operator overload for < and >
-    bool operator < (person &p) const;
-    bool operator < (int n) const;
+    bool operator < (person &p) ;
+    bool operator < (int n) ;
     friend bool operator < (int n, const person &p);
     //these should work with: 1) int < person
     // 2) person < int, 3) int > person, 4) person > int
     void AddResource();
     //person&operator = (const person &p);
+    string GetResourceName();
 };
 bool operator < (int i, const person &p);
 

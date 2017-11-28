@@ -16,7 +16,7 @@ person::person(string fn, string ln, int an)
     //pResource = nullptr;    // c++11
 }
 
-int person::getArNUmber() const
+int person::getArNUmber()
 {
     return arNUmber;
 }
@@ -38,7 +38,7 @@ person::~person()
  * @param p: reference to person
  * @return : true or false
  */
-bool person::operator<(person &p) const
+bool person::operator<(person &p)
 {
     return arNUmber<p.arNUmber;
 }
@@ -46,7 +46,7 @@ bool person::operator<(person &p) const
  * get person name
  * @return : person's object name
  */
-string person::GetName() const
+string person::GetName()
 {
     return firstName + " " + lastName;
 }
@@ -55,7 +55,7 @@ string person::GetName() const
  * @param n: integer
  * @return : true or false
  */
-bool person::operator<(int n) const
+bool person::operator<(int n)
 {
     return arNUmber<n;
 }
@@ -80,7 +80,7 @@ void person::AddResource()
     pResource = make_shared<Resource>("Resource for "+ GetName());
 }
 
-const string &person::getFirstName() const
+const string &person::getFirstName()
 {
     return firstName;
 }
@@ -88,6 +88,11 @@ const string &person::getFirstName() const
 void person::setFirstName(const string &firstName)
 {
     person::firstName = firstName;
+}
+
+string person::GetResourceName()
+{
+    return pResource->GetName();
 }
 ///*!
 // * copy constructor.
