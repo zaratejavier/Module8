@@ -1,16 +1,6 @@
-
-
-
 // File: Accumulator
-
 // Created by Javier Zarate on 11/21/17 for CS1410.
-
-
 // Copyright (c) 2017 WSU
-
-//
-
-
 #include <iostream>
 #include "Accum.h"
 #include "person.h"
