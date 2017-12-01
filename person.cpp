@@ -14,8 +14,14 @@ person::person(string fn, string ln, int an)
     //pResource = NULL; // prior to c++11
     //no need for smart pointers
     //pResource = nullptr;    // c++11
+    //cout<<"Constructing " <<firstName<<endl;
 }
-
+person::~person()
+{
+    // delete[] pResource; // if pResource points to an array
+    // delete pResource;
+    //cout<<"Deleting "<<firstName<<endl;
+}
 int person::getArNUmber()
 {
     return arNUmber;
@@ -28,11 +34,7 @@ void person::setArNUmber(int arNUmber)
 /*!
  * destructor. clean memory
  */
-person::~person()
-{
-   // delete[] pResource; // if pResource points to an array
-   // delete pResource;
-}
+
 /*!
  * compare person<person
  * @param p: reference to person
@@ -94,6 +96,14 @@ string person::GetResourceName()
 {
     return pResource->GetName();
 }
+
+ostream &operator<<(ostream &os, const person &person1)
+{
+    os << "firstName: " << person1.firstName << " lastName: " << person1.lastName << " arNUmber: " << person1.arNUmber;
+    return os;
+}
+
+person::person() {}
 ///*!
 // * copy constructor.
 // * @param p : person object to be copy

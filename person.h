@@ -19,6 +19,9 @@ private:
     shared_ptr<Resource>pResource;  //declare a shared pointer
 public:
     person(string fn, string ln, int an);
+
+    person();
+
     ~person();
     //person(const person &p);    //copy constructor
     string GetName() ;     // return first + last
@@ -41,6 +44,8 @@ public:
     void AddResource();
     //person&operator = (const person &p);
     string GetResourceName();
+
+    friend ostream &operator<<(ostream &os, const person &person1);
 };
 bool operator < (int i, const person &p);
 
